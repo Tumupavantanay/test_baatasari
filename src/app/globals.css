@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  /* ── Brand Palette ── */
+  --color-campus-bg: #F8F6F0;
+  --color-campus-primary: #0C1E3C;
+  --color-campus-secondary: #828894;
+  --color-campus-accent: #A1BCE6;
+  --color-campus-border: #E5E7EB;
+
+  /* ── Derived Shades ── */
+  --color-campus-accent-light: #D6E4F7;
+  --color-campus-accent-dark: #6A95CF;
+  --color-campus-card: #FFFFFF;
+  --color-campus-gold: #D97706;
+  --color-campus-gold-light: #FEF3C7;
+
+  /* ── Font ── */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Animation keyframes ── */
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s ease-out forwards;
+  --animate-fade-in: fade-in 0.4s ease-out forwards;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0.4; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Global Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F8F6F0;
+  color: #0C1E3C;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #A1BCE6;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: #6A95CF; }
+
+/* ── Horizontal scroll utility (hide scrollbar visually) ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ── Glass card effect ── */
+.glass-card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 231, 235, 0.7);
+}
