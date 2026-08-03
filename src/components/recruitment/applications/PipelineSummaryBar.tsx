@@ -95,7 +95,7 @@ export default function PipelineSummaryBar({
 
   return (
     <div
-      className="bg-white border border-[] rounded-2xl shadow-sm overflow-hidden mx-5 lg:mx-6"
+      className="bg-white border border-border rounded-2xl shadow-sm overflow-hidden mx-5 lg:mx-6"
       role="tablist"
       aria-label="Candidate pipeline stages"
     >
@@ -121,7 +121,7 @@ export default function PipelineSummaryBar({
               <div
                 className={cn(
                   'w-9 h-9 rounded-xl flex items-center justify-center transition-colors duration-200',
-                  isActive ? 'bg-white shadow-sm' : 'bg-[] group-hover:bg-white group-hover:shadow-sm'
+                  isActive ? 'bg-white shadow-sm' : 'bg-muted group-hover:bg-white group-hover:shadow-sm'
                 )}
               >
                 <Icon size={17} className={block.iconColor} />
@@ -131,7 +131,7 @@ export default function PipelineSummaryBar({
               <span
                 className={cn(
                   'text-[10px] font-medium leading-tight transition-colors duration-200 hidden sm:block',
-                  isActive ? 'text-[] font-semibold' : 'text-[]'
+                  isActive ? 'text-foreground font-semibold' : 'text-foreground'
                 )}
               >
                 {block.label}
@@ -141,7 +141,7 @@ export default function PipelineSummaryBar({
               <span
                 className={cn(
                   'text-2xl font-bold transition-colors duration-200',
-                  isActive ? 'text-[]' : 'text-[]'
+                  isActive ? 'text-foreground' : 'text-foreground'
                 )}
               >
                 {block.count}

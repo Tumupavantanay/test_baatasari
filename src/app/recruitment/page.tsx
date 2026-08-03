@@ -50,22 +50,22 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
       )}
 
       <aside className={cn(
-        'fixed inset-y-0 left-0 z-50 w-60 bg-[] border-r border-[] flex flex-col transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:flex-shrink-0',
+        'fixed inset-y-0 left-0 z-50 w-60 bg-muted border-r border-border flex flex-col transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:flex-shrink-0',
         open ? 'translate-x-0' : '-translate-x-full'
       )}>
         {/* Logo */}
-        <div className="flex items-center justify-between px-4 pt-4 pb-3.5 border-b border-[]">
+        <div className="flex items-center justify-between px-4 pt-4 pb-3.5 border-b border-border">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[] flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
               <span className="text-[10px] font-black text-white">CC</span>
             </div>
             <div className="leading-tight">
-              <p className="text-[11px] font-bold text-[]">Campus Connect</p>
-              <p className="text-[9px] text-[] font-medium tracking-widest uppercase">by BAATASARI</p>
+              <p className="text-[11px] font-bold text-foreground">Campus Connect</p>
+              <p className="text-[9px] text-foreground font-medium tracking-widest uppercase">by BAATASARI</p>
             </div>
           </div>
-          <button onClick={onClose} className="lg:hidden p-1 rounded-lg hover:bg-[]">
-            <X size={16} className="text-[]" />
+          <button onClick={onClose} className="lg:hidden p-1 rounded-lg hover:bg-muted">
+            <X size={16} className="text-foreground" />
           </button>
         </div>
 
@@ -79,10 +79,10 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
                   <Link href={item.href} onClick={onClose} aria-current={item.isActive ? 'page' : undefined}
                     className={cn(
                       'flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 relative group',
-                      item.isActive ? 'bg-[] text-[] font-semibold' : 'text-[] hover:bg-[] hover:text-[]'
+                      item.isActive ? 'bg-muted text-foreground font-semibold' : 'text-foreground hover:bg-muted hover:text-foreground'
                     )}>
-                    {item.isActive && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-[] rounded-r-full" />}
-                    <Icon size={15} className={cn('flex-shrink-0', item.isActive ? 'text-[]' : 'text-[] group-hover:text-[]')} />
+                    {item.isActive && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-muted rounded-r-full" />}
+                    <Icon size={15} className={cn('flex-shrink-0', item.isActive ? 'text-foreground' : 'text-foreground group-hover:text-foreground')} />
                     <span className="flex-1">{item.label}</span>
                   </Link>
                 </li>
@@ -92,15 +92,15 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
         </nav>
 
         {/* Help card */}
-        <div className="mx-3 mb-4 p-3.5 bg-white border border-[] rounded-xl shadow-sm">
+        <div className="mx-3 mb-4 p-3.5 bg-white border border-border rounded-xl shadow-sm">
           <div className="flex items-center gap-2 mb-1.5">
-            <HelpCircle size={14} className="text-[] flex-shrink-0" />
-            <p className="text-[11px] font-semibold text-[]">Need help?</p>
+            <HelpCircle size={14} className="text-foreground flex-shrink-0" />
+            <p className="text-[11px] font-semibold text-foreground">Need help?</p>
           </div>
-          <p className="text-[10px] text-[] leading-relaxed mb-2.5">
+          <p className="text-[10px] text-foreground leading-relaxed mb-2.5">
             View guide to manage applications and interviews.
           </p>
-          <button className="w-full flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-[] hover:bg-[] text-[] text-[10px] font-semibold transition-colors">
+          <button className="w-full flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-muted hover:bg-muted text-foreground text-[10px] font-semibold transition-colors">
             <ExternalLink size={10} /> View Guide
           </button>
         </div>
@@ -112,29 +112,29 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
 // ── TopBar ────────────────────────────────────────────────────────────────────
 function TopBar({ onMenuOpen }: { onMenuOpen: () => void }) {
   return (
-    <div className="flex items-center justify-between px-4 lg:px-6 py-3 border-b border-[] bg-white sticky top-0 z-30">
+    <div className="flex items-center justify-between px-4 lg:px-6 py-3 border-b border-border bg-white sticky top-0 z-30">
       <div className="flex items-center gap-3">
-        <button onClick={onMenuOpen} className="lg:hidden p-1.5 rounded-xl hover:bg-[] transition-colors" aria-label="Open menu">
-          <Menu size={18} className="text-[]" />
+        <button onClick={onMenuOpen} className="lg:hidden p-1.5 rounded-xl hover:bg-muted transition-colors" aria-label="Open menu">
+          <Menu size={18} className="text-foreground" />
         </button>
-        <Link href="/recruitment" className="flex items-center gap-1.5 text-xs text-[] hover:text-[] font-medium transition-colors group">
+        <Link href="/recruitment" className="flex items-center gap-1.5 text-xs text-foreground hover:text-foreground font-medium transition-colors group">
           <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
           <span className="hidden sm:inline">Back to Roles &amp; Recruitment</span>
           <span className="sm:hidden">Back</span>
         </Link>
       </div>
       <div className="flex items-center gap-2">
-        <button aria-label="Notifications" className="relative w-8 h-8 flex items-center justify-center rounded-xl hover:bg-[] transition-colors">
-          <Bell size={16} className="text-[]" />
-          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[]" />
+        <button aria-label="Notifications" className="relative w-8 h-8 flex items-center justify-center rounded-xl hover:bg-muted transition-colors">
+          <Bell size={16} className="text-foreground" />
+          <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-muted" />
         </button>
-        <button className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl hover:bg-[] border border-transparent hover:border-[] transition-all">
-          <div className="w-7 h-7 rounded-lg bg-[] flex items-center justify-center text-white text-[10px] font-bold">RV</div>
+        <button className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl hover:bg-muted border border-transparent hover:border-border transition-all">
+          <div className="w-7 h-7 rounded-lg bg-muted flex items-center justify-center text-white text-[10px] font-bold">RV</div>
           <div className="text-left leading-tight hidden sm:block">
-            <p className="text-xs font-semibold text-[]">Tech Club</p>
-            <p className="text-[10px] text-[]">Club Lead</p>
+            <p className="text-xs font-semibold text-foreground">Tech Club</p>
+            <p className="text-[10px] text-foreground">Club Lead</p>
           </div>
-          <ChevronDown size={12} className="text-[] hidden sm:block" />
+          <ChevronDown size={12} className="text-foreground hidden sm:block" />
         </button>
       </div>
     </div>
@@ -143,7 +143,7 @@ function TopBar({ onMenuOpen }: { onMenuOpen: () => void }) {
 
 // ── Pipeline Bar ──────────────────────────────────────────────────────────────
 const PIPELINE_CONFIG: { status: CandidateStatus; label: string; shortLabel: string; icon: React.ElementType; iconColor: string; activeBg: string; activeBorder: string }[] = [
-  { status: 'new', label: 'New Applications', shortLabel: 'New', icon: Inbox, iconColor: 'text-[]', activeBg: 'bg-orange-50', activeBorder: 'border-b-[]' },
+  { status: 'new', label: 'New Applications', shortLabel: 'New', icon: Inbox, iconColor: 'text-foreground', activeBg: 'bg-orange-50', activeBorder: 'border-b-[]' },
   { status: 'review', label: 'Under Review', shortLabel: 'Review', icon: Eye, iconColor: 'text-[#3B82F6]', activeBg: 'bg-blue-50', activeBorder: 'border-b-[#3B82F6]' },
   { status: 'shortlisted', label: 'Shortlisted', shortLabel: 'Shortlist', icon: Star, iconColor: 'text-[#14B8A6]', activeBg: 'bg-teal-50', activeBorder: 'border-b-[#14B8A6]' },
   { status: 'interview', label: 'Interview Scheduled', shortLabel: 'Interview', icon: Calendar, iconColor: 'text-[#8B5CF6]', activeBg: 'bg-purple-50', activeBorder: 'border-b-[#8B5CF6]' },
@@ -157,7 +157,7 @@ function PipelineBar({ metrics, active, onChange }: { metrics: PipelineMetrics; 
     interview: metrics.interviewCount, selected: metrics.selectedCount, rejected: metrics.rejectedCount,
   };
   return (
-    <div className="bg-white border border-[] rounded-2xl shadow-sm overflow-hidden" role="tablist">
+    <div className="bg-white border border-border rounded-2xl shadow-sm overflow-hidden" role="tablist">
       <div className="grid grid-cols-3 lg:grid-cols-6 divide-x divide-[]">
         {PIPELINE_CONFIG.map((cfg) => {
           const Icon = cfg.icon;
@@ -165,15 +165,15 @@ function PipelineBar({ metrics, active, onChange }: { metrics: PipelineMetrics; 
           return (
             <button key={cfg.status} role="tab" aria-selected={isActive} onClick={() => onChange(cfg.status)}
               className={cn('flex flex-col items-center gap-1 px-2 py-3.5 text-center transition-all duration-200 border-b-2 group',
-                isActive ? `${cfg.activeBg} ${cfg.activeBorder}` : 'border-b-transparent hover:bg-[]')}>
-              <div className={cn('w-8 h-8 rounded-xl flex items-center justify-center transition-colors', isActive ? 'bg-white shadow-sm' : 'bg-[]')}>
+                isActive ? `${cfg.activeBg} ${cfg.activeBorder}` : 'border-b-transparent hover:bg-muted')}>
+              <div className={cn('w-8 h-8 rounded-xl flex items-center justify-center transition-colors', isActive ? 'bg-white shadow-sm' : 'bg-muted')}>
                 <Icon size={15} className={cfg.iconColor} />
               </div>
-              <span className={cn('text-[10px] font-medium leading-tight transition-colors', isActive ? 'text-[] font-semibold' : 'text-[]')}>
+              <span className={cn('text-[10px] font-medium leading-tight transition-colors', isActive ? 'text-foreground font-semibold' : 'text-foreground')}>
                 <span className="hidden lg:inline">{cfg.label}</span>
                 <span className="lg:hidden">{cfg.shortLabel}</span>
               </span>
-              <span className={cn('text-xl font-bold', isActive ? 'text-[]' : 'text-[]')}>{counts[cfg.status]}</span>
+              <span className={cn('text-xl font-bold', isActive ? 'text-foreground' : 'text-foreground')}>{counts[cfg.status]}</span>
             </button>
           );
         })}
@@ -227,14 +227,14 @@ function Carousel({
   if (!cur) return null;
 
   return (
-    <div className="bg-white border border-[] rounded-2xl shadow-sm overflow-hidden">
+    <div className="bg-white border border-border rounded-2xl shadow-sm overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-[]">
+      <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-border">
         <div>
-          <h2 className="text-sm font-bold text-[]">New Applications <span className="text-[]">({total})</span></h2>
-          <p className="text-[11px] text-[] mt-0.5">{total} students waiting for your review.</p>
+          <h2 className="text-sm font-bold text-foreground">New Applications <span className="text-foreground">({total})</span></h2>
+          <p className="text-[11px] text-foreground mt-0.5">{total} students waiting for your review.</p>
         </div>
-        <button onClick={onMarkAll} className="text-xs font-medium text-[] border border-[] hover:bg-[] px-3 py-2 rounded-xl transition-all active:scale-95 whitespace-nowrap">
+        <button onClick={onMarkAll} className="text-xs font-medium text-foreground border border-border hover:bg-muted px-3 py-2 rounded-xl transition-all active:scale-95 whitespace-nowrap">
           Mark all as reviewed
         </button>
       </div>
@@ -243,8 +243,8 @@ function Carousel({
       <div className="flex items-stretch">
         {/* Prev arrow */}
         <button onClick={goPrev} disabled={animating} aria-label="Previous candidate"
-          className="w-8 sm:w-10 flex items-center justify-center border-r border-[] hover:bg-[] transition-colors disabled:opacity-40 flex-shrink-0">
-          <ChevronLeft size={16} className="text-[]" />
+          className="w-8 sm:w-10 flex items-center justify-center border-r border-border hover:bg-muted transition-colors disabled:opacity-40 flex-shrink-0">
+          <ChevronLeft size={16} className="text-foreground" />
         </button>
 
         {/* Content */}
@@ -252,43 +252,43 @@ function Carousel({
           {/* Mobile stacked / Desktop 3-col */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
             {/* Left: meta */}
-            <div className="p-4 sm:p-5 border-b md:border-b-0 md:border-r border-[]">
+            <div className="p-4 sm:p-5 border-b md:border-b-0 md:border-r border-border">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 shadow"
                   style={{ backgroundColor: cur.avatarColor }}>
                   {cur.avatarInitials}
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-bold text-[] truncate">{cur.name}</p>
-                  <p className="text-xs text-[]">{cur.major} • {cur.year}</p>
-                  <p className="text-xs text-[] truncate">{cur.university}</p>
+                  <p className="text-sm font-bold text-foreground truncate">{cur.name}</p>
+                  <p className="text-xs text-foreground">{cur.major} • {cur.year}</p>
+                  <p className="text-xs text-foreground truncate">{cur.university}</p>
                 </div>
               </div>
-              <p className="text-[10px] text-[] mb-3">{cur.appliedTime}</p>
+              <p className="text-[10px] text-foreground mb-3">{cur.appliedTime}</p>
               <div className="space-y-1">
                 {[['CGPA', cur.cgpa], ['Experience', cur.experience ?? '—'], ['Location', cur.location]].map(([l, v]) => (
-                  <div key={l} className="flex items-center justify-between py-1 border-b border-[] last:border-0">
-                    <span className="text-[11px] text-[]">{l}</span>
-                    <span className="text-[11px] font-semibold text-[]">{v}</span>
+                  <div key={l} className="flex items-center justify-between py-1 border-b border-border last:border-0">
+                    <span className="text-[11px] text-foreground">{l}</span>
+                    <span className="text-[11px] font-semibold text-foreground">{v}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Center: about + skills + docs */}
-            <div className="p-4 sm:p-5 border-b md:border-b-0 md:border-r border-[]">
-              <p className="text-[10px] font-bold text-[] uppercase tracking-wider mb-1.5">About</p>
-              <p className="text-xs text-[] leading-relaxed mb-3">{cur.about}</p>
+            <div className="p-4 sm:p-5 border-b md:border-b-0 md:border-r border-border">
+              <p className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-1.5">About</p>
+              <p className="text-xs text-foreground leading-relaxed mb-3">{cur.about}</p>
 
-              <p className="text-[10px] font-bold text-[] uppercase tracking-wider mb-1.5">Top Skills</p>
+              <p className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-1.5">Top Skills</p>
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {cur.skills.map(s => (
-                  <span key={s} className="px-2 py-0.5 bg-[] text-[] text-[11px] font-medium rounded-lg border border-[]">{s}</span>
+                  <span key={s} className="px-2 py-0.5 bg-muted text-foreground text-[11px] font-medium rounded-lg border border-border">{s}</span>
                 ))}
               </div>
 
               {/* Docs */}
-              <p className="text-[10px] font-bold text-[] uppercase tracking-wider mb-1.5">Documents</p>
+              <p className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-1.5">Documents</p>
               {cur.documents.map(d => (
                 <a key={d.name} href={d.url} target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 mb-1.5 group">
@@ -296,8 +296,8 @@ function Carousel({
                     <FileText size={11} className="text-red-500" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[11px] font-medium text-[] group-hover:text-[] truncate">{d.name}</p>
-                    <p className="text-[9px] text-[]">{d.size}</p>
+                    <p className="text-[11px] font-medium text-foreground group-hover:text-foreground truncate">{d.name}</p>
+                    <p className="text-[9px] text-foreground">{d.size}</p>
                   </div>
                 </a>
               ))}
@@ -305,7 +305,7 @@ function Carousel({
               {/* Links */}
               {cur.githubProfileUrl && (
                 <div className="mt-2">
-                  <p className="text-[10px] font-bold text-[] uppercase tracking-wider mb-1">Github Profile</p>
+                  <p className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-1">Github Profile</p>
                   <a href={`https://${cur.githubProfileUrl}`} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-1.5 text-[11px] text-[#3B82F6] hover:underline">
                     <Link2 size={11} /> {cur.githubProfileUrl}
@@ -314,7 +314,7 @@ function Carousel({
               )}
               {cur.portfolioUrl && (
                 <div className="mt-2">
-                  <p className="text-[10px] font-bold text-[] uppercase tracking-wider mb-1">/Portfolio</p>
+                  <p className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-1">/Portfolio</p>
                   <a href={`https://${cur.portfolioUrl}`} target="_blank" rel="noopener noreferrer"
                     className="flex items-center gap-1.5 text-[11px] text-[#3B82F6] hover:underline">
                     <Globe size={11} /> {cur.portfolioUrl}
@@ -325,11 +325,11 @@ function Carousel({
 
             {/* Right: summary */}
             <div className="p-4 sm:p-5">
-              <p className="text-[10px] font-bold text-[] uppercase tracking-wider mb-2">Quick Summary</p>
+              <p className="text-[10px] font-bold text-foreground uppercase tracking-wider mb-2">Quick Summary</p>
               <ul className="space-y-1.5">
                 {cur.summaryHighlights.map(h => (
-                  <li key={h} className="flex items-start gap-2 text-xs text-[]">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-[] flex-shrink-0" />
+                  <li key={h} className="flex items-start gap-2 text-xs text-foreground">
+                    <span className="mt-1.5 w-1 h-1 rounded-full bg-muted flex-shrink-0" />
                     {h}
                   </li>
                 ))}
@@ -338,7 +338,7 @@ function Carousel({
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-t border-[] flex-wrap gap-2">
+          <div className="flex items-center justify-between px-4 sm:px-5 py-3 border-t border-border flex-wrap gap-2">
             <div className="flex items-center gap-2 flex-wrap">
               <button onClick={() => onReject(cur)}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 text-xs font-semibold transition-all active:scale-95">
@@ -349,12 +349,12 @@ function Carousel({
                 <Eye size={12} /> Move to Review
               </button>
               <button onClick={() => onShortlist(cur)}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[] hover:bg-[] text-white text-xs font-semibold transition-all active:scale-95 shadow-sm">
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-muted hover:bg-muted text-white text-xs font-semibold transition-all active:scale-95 shadow-sm">
                 <Star size={12} /> Shortlist
               </button>
             </div>
             <button onClick={() => onViewFull(cur)}
-              className="flex items-center gap-1 text-xs font-medium text-[] hover:text-[] transition-colors">
+              className="flex items-center gap-1 text-xs font-medium text-foreground hover:text-foreground transition-colors">
               View Full Application <ExternalLink size={10} />
             </button>
           </div>
@@ -362,8 +362,8 @@ function Carousel({
 
         {/* Next arrow */}
         <button onClick={goNext} disabled={animating} aria-label="Next candidate"
-          className="w-8 sm:w-10 flex items-center justify-center border-l border-[] hover:bg-[] transition-colors disabled:opacity-40 flex-shrink-0">
-          <ChevronRight size={16} className="text-[]" />
+          className="w-8 sm:w-10 flex items-center justify-center border-l border-border hover:bg-muted transition-colors disabled:opacity-40 flex-shrink-0">
+          <ChevronRight size={16} className="text-foreground" />
         </button>
       </div>
 
@@ -371,7 +371,7 @@ function Carousel({
       <div className="flex items-center justify-center gap-1.5 py-3">
         {candidates.map((_, i) => (
           <button key={i} onClick={() => go(i, i > idx ? 'right' : 'left')} aria-label={`Candidate ${i + 1}`}
-            className={cn('rounded-full transition-all duration-200', i === idx ? 'w-4 h-2 bg-[]' : 'w-2 h-2 bg-[#D1D5DB] hover:bg-[]')} />
+            className={cn('rounded-full transition-all duration-200', i === idx ? 'w-4 h-2 bg-muted' : 'w-2 h-2 bg-[#D1D5DB] hover:bg-muted')} />
         ))}
       </div>
     </div>
@@ -399,7 +399,7 @@ function CandidateRow({ c, onView, onShortlist, onSchedule, onMore, onAssign }: 
   }, []);
 
   return (
-    <div id={`row-${c.id}`} ref={rowRef} onClick={() => onView(c)} className="flex items-center gap-3 px-4 sm:px-5 py-3.5 hover:bg-[] transition-colors border-b border-[] last:border-0 cursor-pointer overflow-hidden">
+    <div id={`row-${c.id}`} ref={rowRef} onClick={() => onView(c)} className="flex items-center gap-3 px-4 sm:px-5 py-3.5 hover:bg-muted transition-colors border-b border-border last:border-0 cursor-pointer overflow-hidden">
       {/* Avatar */}
       <div className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0 shadow-sm"
         style={{ backgroundColor: c.avatarColor }}>
@@ -408,24 +408,24 @@ function CandidateRow({ c, onView, onShortlist, onSchedule, onMore, onAssign }: 
 
       {/* Name + meta */}
       <div className="min-w-0 flex-shrink-0 w-24 sm:w-32">
-        <p className="text-xs font-semibold text-[] truncate">{c.name}</p>
-        <p className="text-[10px] text-[] truncate">{c.major} • {c.year}</p>
+        <p className="text-xs font-semibold text-foreground truncate">{c.name}</p>
+        <p className="text-[10px] text-foreground truncate">{c.major} • {c.year}</p>
       </div>
 
       {/* Applied time */}
       {(c.status === 'review' || c.status === 'shortlisted') && (
         <div className="hidden sm:block flex-shrink-0 w-16">
-          <p className="text-[10px] text-[]">Applied</p>
-          <p className="text-[10px] font-medium text-[] leading-tight">{c.appliedTime.replace('Applied ', '')}</p>
+          <p className="text-[10px] text-foreground">Applied</p>
+          <p className="text-[10px] font-medium text-foreground leading-tight">{c.appliedTime.replace('Applied ', '')}</p>
         </div>
       )}
 
       {/* Skills (review / shortlisted) */}
       {(c.status === 'review' || c.status === 'shortlisted') && (
         <div className="hidden md:flex flex-1 flex-wrap gap-1 items-center min-w-0">
-          <p className="text-[10px] text-[] w-full mb-0.5">Top Skills</p>
+          <p className="text-[10px] text-foreground w-full mb-0.5">Top Skills</p>
           {c.skills.slice(0, 3).map(s => (
-            <span key={s} className="px-2 py-0.5 bg-[] text-[10px] font-medium text-[] rounded-md border border-[]">{s}</span>
+            <span key={s} className="px-2 py-0.5 bg-muted text-[10px] font-medium text-foreground rounded-md border border-border">{s}</span>
           ))}
         </div>
       )}
@@ -433,15 +433,15 @@ function CandidateRow({ c, onView, onShortlist, onSchedule, onMore, onAssign }: 
       {/* Reviewer */}
       {c.status === 'review' && c.reviewedBy && (
         <div className="hidden lg:block flex-shrink-0">
-          <p className="text-[10px] text-[]">Reviewed by</p>
-          <p className="text-[10px] font-semibold text-[]">{c.reviewedBy}</p>
+          <p className="text-[10px] text-foreground">Reviewed by</p>
+          <p className="text-[10px] font-semibold text-foreground">{c.reviewedBy}</p>
         </div>
       )}
 
       {/* Score */}
       {c.status === 'shortlisted' && c.score != null && (
         <div className="hidden sm:flex flex-col flex-shrink-0 items-end ml-auto mr-2">
-          <p className="text-[10px] text-[] mb-1">Score</p>
+          <p className="text-[10px] text-foreground mb-1">Score</p>
           <span className={cn('px-2.5 py-0.5 rounded-lg text-xs font-bold border',
             c.score >= 85 ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
             : c.score >= 70 ? 'bg-blue-50 text-blue-700 border-blue-200'
@@ -455,18 +455,18 @@ function CandidateRow({ c, onView, onShortlist, onSchedule, onMore, onAssign }: 
       {c.status === 'interview' && (
         <>
           <div className="hidden sm:block flex-shrink-0 w-24">
-            <p className="text-[10px] text-[]">Interview on</p>
-            <p className="text-[10px] font-semibold text-[]">{c.interviewDate}, {c.interviewTime}</p>
+            <p className="text-[10px] text-foreground">Interview on</p>
+            <p className="text-[10px] font-semibold text-foreground">{c.interviewDate}, {c.interviewTime}</p>
           </div>
           <div className="hidden md:flex flex-col flex-shrink-0">
-            <p className="text-[10px] text-[] mb-1">Interviewers</p>
+            <p className="text-[10px] text-foreground mb-1">Interviewers</p>
             <div className="flex items-center">
               {c.interviewers.slice(0, 3).map((iv, i) => (
                 <div key={i} title={iv.name} className="w-6 h-6 rounded-full flex items-center justify-center text-white text-[9px] font-bold border-2 border-white -ml-1.5 first:ml-0"
                   style={{ backgroundColor: iv.avatarColor }}>{iv.initials}</div>
               ))}
               {c.interviewers.length > 3 && (
-                <div className="w-6 h-6 rounded-full flex items-center justify-center bg-[] text-[] text-[9px] font-bold border-2 border-white -ml-1.5">
+                <div className="w-6 h-6 rounded-full flex items-center justify-center bg-muted text-foreground text-[9px] font-bold border-2 border-white -ml-1.5">
                   +{c.interviewers.length - 3}
                 </div>
               )}
@@ -483,12 +483,12 @@ function CandidateRow({ c, onView, onShortlist, onSchedule, onMore, onAssign }: 
       {c.status === 'selected' && (
         <>
           <div className="hidden sm:block flex-shrink-0 w-24">
-            <p className="text-[10px] text-[]">Selected on</p>
-            <p className="text-[10px] font-semibold text-[]">{c.selectedDate}</p>
+            <p className="text-[10px] text-foreground">Selected on</p>
+            <p className="text-[10px] font-semibold text-foreground">{c.selectedDate}</p>
           </div>
           {c.nextStepLabel && (
             <div className="hidden sm:flex flex-col flex-shrink-0">
-              <p className="text-[10px] text-[] mb-1">Next Step</p>
+              <p className="text-[10px] text-foreground mb-1">Next Step</p>
               <button onClick={e => { e.stopPropagation(); onAssign?.(c); }}
                 className="px-2.5 py-1 text-[10px] font-semibold rounded-lg bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors">
                 {c.nextStepLabel}
@@ -505,29 +505,29 @@ function CandidateRow({ c, onView, onShortlist, onSchedule, onMore, onAssign }: 
       <div className="flex items-center gap-1 flex-shrink-0 ml-auto">
         {(c.status === 'shortlisted' || c.status === 'interview') && (
           <button onClick={e => { e.stopPropagation(); onSchedule?.(c); }} aria-label="Schedule"
-            className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-[] border border-transparent hover:border-[] transition-all">
-            <Calendar size={13} className="text-[]" />
+            className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-muted border border-transparent hover:border-border transition-all">
+            <Calendar size={13} className="text-foreground" />
           </button>
         )}
         {c.status === 'review' && (
           <button onClick={e => { e.stopPropagation(); onShortlist?.(c); }} aria-label="Shortlist"
-            className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-[] border border-transparent hover:border-[] transition-all">
-            <Star size={13} className="text-[]" />
+            className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-muted border border-transparent hover:border-border transition-all">
+            <Star size={13} className="text-foreground" />
           </button>
         )}
         {c.status === 'selected' && (
           <button onClick={e => { e.stopPropagation(); onAssign?.(c); }} aria-label="Assign"
-            className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-[] border border-transparent hover:border-[] transition-all">
-            <UserPlus size={13} className="text-[]" />
+            className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-muted border border-transparent hover:border-border transition-all">
+            <UserPlus size={13} className="text-foreground" />
           </button>
         )}
         <button onClick={e => { e.stopPropagation(); onView(c); }} aria-label="View"
-          className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-[] border border-transparent hover:border-[] transition-all">
-          <Eye size={13} className="text-[]" />
+          className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-muted border border-transparent hover:border-border transition-all">
+          <Eye size={13} className="text-foreground" />
         </button>
         <button onClick={e => { e.stopPropagation(); onMore(c); }} aria-label="More"
-          className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-[] border border-transparent hover:border-[] transition-all">
-          <MoreVertical size={13} className="text-[]" />
+          className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-muted border border-transparent hover:border-border transition-all">
+          <MoreVertical size={13} className="text-foreground" />
         </button>
       </div>
     </div>
@@ -536,7 +536,7 @@ function CandidateRow({ c, onView, onShortlist, onSchedule, onMore, onAssign }: 
 
 // ── Status Section Accordion ──────────────────────────────────────────────────
 const STATUS_META: Record<CandidateStatus, { label: string; icon: React.ElementType; iconColor: string; badgeColor: string; desc: string }> = {
-  new:         { label: 'New Applications',     icon: Inbox,        iconColor: 'text-[]', badgeColor: 'bg-orange-50 text-orange-700 border-orange-200',  desc: 'waiting for review.' },
+  new:         { label: 'New Applications',     icon: Inbox,        iconColor: 'text-foreground', badgeColor: 'bg-orange-50 text-orange-700 border-orange-200',  desc: 'waiting for review.' },
   review:      { label: 'Under Review',         icon: Eye,          iconColor: 'text-[#3B82F6]', badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',        desc: 'being reviewed by your team.' },
   shortlisted: { label: 'Shortlisted',          icon: Star,         iconColor: 'text-[#14B8A6]', badgeColor: 'bg-teal-50 text-teal-700 border-teal-200',        desc: 'shortlisted for interview.' },
   interview:   { label: 'Interview Scheduled',  icon: Calendar,     iconColor: 'text-[#8B5CF6]', badgeColor: 'bg-purple-50 text-purple-700 border-purple-200',  desc: 'interviews are scheduled.' },
@@ -579,9 +579,9 @@ function StatusSection({ status, candidates, totalCount, defaultOpen = true, onV
   };
 
   return (
-    <div className="bg-white border border-[] rounded-2xl shadow-sm overflow-hidden">
+    <div className="bg-white border border-border rounded-2xl shadow-sm overflow-hidden">
       {/* Accordion header — uses a div so "View all" button isn't nested inside another button */}
-      <div className="flex items-center justify-between px-4 sm:px-5 hover:bg-[] transition-colors">
+      <div className="flex items-center justify-between px-4 sm:px-5 hover:bg-muted transition-colors">
         {/* Left: clickable toggle area */}
         <div
           role="button"
@@ -591,15 +591,15 @@ function StatusSection({ status, candidates, totalCount, defaultOpen = true, onV
           onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && toggle()}
           className="flex-1 flex items-center gap-3 py-4 cursor-pointer min-w-0 text-left"
         >
-          <div className="w-8 h-8 rounded-xl bg-[] flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 rounded-xl bg-muted flex items-center justify-center flex-shrink-0">
             <Icon size={15} className={m.iconColor} />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
-              <h2 className="text-sm font-bold text-[]">{m.label}</h2>
+              <h2 className="text-sm font-bold text-foreground">{m.label}</h2>
               <span className={cn('px-2 py-0.5 rounded-full text-[10px] font-bold border', m.badgeColor)}>{totalCount}</span>
             </div>
-            <p className="text-[11px] text-[] mt-0.5">{totalCount} {m.desc}</p>
+            <p className="text-[11px] text-foreground mt-0.5">{totalCount} {m.desc}</p>
           </div>
         </div>
 
@@ -607,7 +607,7 @@ function StatusSection({ status, candidates, totalCount, defaultOpen = true, onV
         <div className="flex items-center gap-2 flex-shrink-0 py-4">
           <button
             onClick={e => { e.stopPropagation(); onViewAll?.(status); }}
-            className="hidden sm:flex items-center gap-1 text-xs text-[] hover:text-[] font-medium transition-colors"
+            className="hidden sm:flex items-center gap-1 text-xs text-foreground hover:text-foreground font-medium transition-colors"
           >
             View all ({totalCount}) <ChevronDown size={11} />
           </button>
@@ -616,24 +616,24 @@ function StatusSection({ status, candidates, totalCount, defaultOpen = true, onV
             tabIndex={-1}
             aria-hidden="true"
             onClick={toggle}
-            className="w-7 h-7 flex items-center justify-center rounded-lg bg-[] cursor-pointer"
+            className="w-7 h-7 flex items-center justify-center rounded-lg bg-muted cursor-pointer"
           >
-            <ChevronDown size={13} className={cn("text-[] transition-transform duration-200", open ? "rotate-180" : "")} />
+            <ChevronDown size={13} className={cn("text-foreground transition-transform duration-200", open ? "rotate-180" : "")} />
           </div>
         </div>
       </div>
 
-      <div ref={bodyRef} className={cn('border-t border-[] overflow-hidden', !open && 'hidden')} style={{ height: open ? 'auto' : 0 }}>
+      <div ref={bodyRef} className={cn('border-t border-border overflow-hidden', !open && 'hidden')} style={{ height: open ? 'auto' : 0 }}>
         {candidates.length === 0
-          ? <p className="px-5 py-8 text-center text-sm text-[]">No candidates in this stage yet.</p>
+          ? <p className="px-5 py-8 text-center text-sm text-foreground">No candidates in this stage yet.</p>
           : <>
             {candidates.map(c => (
               <CandidateRow key={c.id} c={c} onView={onView} onShortlist={onShortlist}
                 onSchedule={onSchedule} onMore={onMore} onAssign={onAssign} />
             ))}
             {totalCount > candidates.length && (
-              <div className="px-5 py-3 border-t border-[] flex justify-center">
-                <button onClick={() => onViewAll?.(status)} className="text-xs font-medium text-[] hover:text-[#EA580C] transition-colors">
+              <div className="px-5 py-3 border-t border-border flex justify-center">
+                <button onClick={() => onViewAll?.(status)} className="text-xs font-medium text-foreground hover:text-[#EA580C] transition-colors">
                   View all {totalCount} →
                 </button>
               </div>
@@ -676,28 +676,28 @@ function CandidateProfileDrawer({ candidate, onClose }: { candidate: ReviewCandi
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center sm:p-4">
-      <div ref={overlayRef} className="absolute inset-0 bg-[]/40 backdrop-blur-sm" onClick={handleClose} />
+      <div ref={overlayRef} className="absolute inset-0 bg-muted/40 backdrop-blur-sm" onClick={handleClose} />
       
       <div ref={panelRef} className="relative w-full h-full sm:h-auto sm:max-h-[90vh] sm:max-w-2xl bg-white sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="flex items-start justify-between p-5 border-b border-[]">
+        <div className="flex items-start justify-between p-5 border-b border-border">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-md"
               style={{ backgroundColor: candidate.avatarColor }}>
               {candidate.avatarInitials}
             </div>
             <div>
-              <h2 className="text-lg font-bold text-[]">{candidate.name}</h2>
-              <p className="text-sm text-[] font-medium">{candidate.major} • {candidate.year}</p>
+              <h2 className="text-lg font-bold text-foreground">{candidate.name}</h2>
+              <p className="text-sm text-foreground font-medium">{candidate.major} • {candidate.year}</p>
               <div className="flex items-center gap-2 mt-1">
                 <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide bg-blue-50 text-blue-700 border border-blue-200">
                   {candidate.status}
                 </span>
-                <span className="text-[11px] text-[]">{candidate.appliedTime}</span>
+                <span className="text-[11px] text-foreground">{candidate.appliedTime}</span>
               </div>
             </div>
           </div>
-          <button onClick={handleClose} className="p-2 rounded-xl hover:bg-[] transition-colors text-[]">
+          <button onClick={handleClose} className="p-2 rounded-xl hover:bg-muted transition-colors text-foreground">
             <X size={20} />
           </button>
         </div>
@@ -711,50 +711,50 @@ function CandidateProfileDrawer({ candidate, onClose }: { candidate: ReviewCandi
               ['Location', candidate.location],
               ['University', candidate.university]
             ].map(([l, v]) => (
-              <div key={l} className="bg-[] p-3 rounded-xl border border-[]">
-                <p className="text-[10px] text-[] uppercase tracking-wider font-semibold mb-1">{l}</p>
-                <p className="text-xs font-bold text-[] truncate" title={v as string}>{v}</p>
+              <div key={l} className="bg-muted p-3 rounded-xl border border-border">
+                <p className="text-[10px] text-foreground uppercase tracking-wider font-semibold mb-1">{l}</p>
+                <p className="text-xs font-bold text-foreground truncate" title={v as string}>{v}</p>
               </div>
             ))}
           </div>
 
           <div className="mb-6">
-            <h3 className="text-xs font-bold text-[] uppercase tracking-wider mb-2">About</h3>
-            <p className="text-sm text-[] leading-relaxed bg-[] p-4 rounded-xl border border-[#F0F2F5]">{candidate.about}</p>
+            <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-2">About</h3>
+            <p className="text-sm text-foreground leading-relaxed bg-muted p-4 rounded-xl border border-[#F0F2F5]">{candidate.about}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
             <div>
-              <h3 className="text-xs font-bold text-[] uppercase tracking-wider mb-2">Top Skills</h3>
+              <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-2">Top Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {candidate.skills.map(s => (
-                  <span key={s} className="px-2.5 py-1 bg-[#F0F2F5] text-[#374151] text-xs font-medium rounded-lg border border-[]">{s}</span>
+                  <span key={s} className="px-2.5 py-1 bg-[#F0F2F5] text-[#374151] text-xs font-medium rounded-lg border border-border">{s}</span>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="text-xs font-bold text-[] uppercase tracking-wider mb-2">Links</h3>
+              <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-2">Links</h3>
               <div className="space-y-2">
                 {candidate.githubProfileUrl && (
                   <a href={`https://${candidate.githubProfileUrl}`} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 rounded-xl hover:bg-[] transition-colors group">
-                    <div className="w-8 h-8 rounded-lg bg-[] flex items-center justify-center group-hover:bg-[] group-hover:text-white transition-colors">
-                      <Link2 size={14} className="text-[] group-hover:text-white" />
+                    className="flex items-center gap-2 p-2 rounded-xl hover:bg-muted transition-colors group">
+                    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center group-hover:bg-muted group-hover:text-white transition-colors">
+                      <Link2 size={14} className="text-foreground group-hover:text-white" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[10px] font-semibold text-[]">Github</p>
+                      <p className="text-[10px] font-semibold text-foreground">Github</p>
                       <p className="text-xs font-medium text-[#3B82F6] truncate">{candidate.githubProfileUrl}</p>
                     </div>
                   </a>
                 )}
                 {candidate.portfolioUrl && (
                   <a href={`https://${candidate.portfolioUrl}`} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 rounded-xl hover:bg-[] transition-colors group">
-                    <div className="w-8 h-8 rounded-lg bg-[] flex items-center justify-center group-hover:bg-[] group-hover:text-white transition-colors">
-                      <Globe size={14} className="text-[] group-hover:text-white" />
+                    className="flex items-center gap-2 p-2 rounded-xl hover:bg-muted transition-colors group">
+                    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center group-hover:bg-muted group-hover:text-white transition-colors">
+                      <Globe size={14} className="text-foreground group-hover:text-white" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[10px] font-semibold text-[]">Portfolio</p>
+                      <p className="text-[10px] font-semibold text-foreground">Portfolio</p>
                       <p className="text-xs font-medium text-[#3B82F6] truncate">{candidate.portfolioUrl}</p>
                     </div>
                   </a>
@@ -764,17 +764,17 @@ function CandidateProfileDrawer({ candidate, onClose }: { candidate: ReviewCandi
           </div>
 
           <div className="mb-2">
-            <h3 className="text-xs font-bold text-[] uppercase tracking-wider mb-2">Documents</h3>
+            <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-2">Documents</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {candidate.documents.map(d => (
                 <a key={d.name} href={d.url} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 rounded-xl border border-[] hover:border-[] hover:shadow-sm transition-all group bg-white">
+                  className="flex items-center gap-3 p-3 rounded-xl border border-border hover:border-border hover:shadow-sm transition-all group bg-white">
                   <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0 group-hover:bg-red-100 transition-colors">
                     <FileText size={14} className="text-red-500" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-bold text-[] group-hover:text-[] truncate transition-colors">{d.name}</p>
-                    <p className="text-[10px] font-medium text-[] mt-0.5">{d.size}</p>
+                    <p className="text-xs font-bold text-foreground group-hover:text-foreground truncate transition-colors">{d.name}</p>
+                    <p className="text-[10px] font-medium text-foreground mt-0.5">{d.size}</p>
                   </div>
                 </a>
               ))}
@@ -783,13 +783,13 @@ function CandidateProfileDrawer({ candidate, onClose }: { candidate: ReviewCandi
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 border-t border-[] bg-[] flex items-center justify-end gap-2">
+        <div className="p-4 border-t border-border bg-muted flex items-center justify-end gap-2">
           <button onClick={handleClose}
-            className="px-4 py-2 text-xs font-bold text-[] hover:bg-[] rounded-xl transition-colors">
+            className="px-4 py-2 text-xs font-bold text-foreground hover:bg-muted rounded-xl transition-colors">
             Close
           </button>
           <a href={`mailto:hello@campusconnect.edu`}
-            className="flex items-center gap-1.5 px-5 py-2 bg-[] text-white text-xs font-bold rounded-xl shadow-sm hover:bg-[]/90 transition-all active:scale-95">
+            className="flex items-center gap-1.5 px-5 py-2 bg-muted text-white text-xs font-bold rounded-xl shadow-sm hover:bg-muted/90 transition-all active:scale-95">
             Contact Candidate
           </a>
         </div>
@@ -943,7 +943,7 @@ export default function RecruitmentPage() {
   const newList = by('new');
 
   return (
-    <div className="flex min-h-screen bg-[]">
+    <div className="flex min-h-screen bg-muted">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <div className="flex-1 flex flex-col min-w-0">
@@ -954,7 +954,7 @@ export default function RecruitmentPage() {
           {toast && (
             <div role="alert" aria-live="polite"
               className={cn('fixed top-4 right-4 z-[999] px-4 py-3 rounded-xl shadow-xl text-sm font-medium text-white max-w-xs',
-                toast.type === 'success' ? 'bg-emerald-600' : toast.type === 'error' ? 'bg-red-500' : 'bg-[]')}>
+                toast.type === 'success' ? 'bg-emerald-600' : toast.type === 'error' ? 'bg-red-500' : 'bg-muted')}>
               {toast.message}
             </div>
           )}
@@ -962,19 +962,19 @@ export default function RecruitmentPage() {
           {/* Page Header */}
           <div data-a className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 px-4 sm:px-6 pt-5 pb-4">
             <div>
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[] leading-tight tracking-tight">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground leading-tight tracking-tight">
                 {currentRole.title}
               </h1>
-              <p className="text-sm font-semibold text-[] mt-0.5">{currentRole.subtitle}</p>
-              <p className="text-xs text-[] mt-1 hidden sm:block">{currentRole.description}</p>
+              <p className="text-sm font-semibold text-foreground mt-0.5">{currentRole.subtitle}</p>
+              <p className="text-xs text-foreground mt-1 hidden sm:block">{currentRole.description}</p>
             </div>
             <div className="flex items-center gap-2 flex-shrink-0">
               <button onClick={handleExport}
-                className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-white border border-[] hover:border-[#D1D5DB] text-[] text-xs sm:text-sm font-medium shadow-sm hover:shadow-md transition-all active:scale-95">
-                <Download size={13} className="text-[]" /> Export
+                className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-white border border-border hover:border-[#D1D5DB] text-foreground text-xs sm:text-sm font-medium shadow-sm hover:shadow-md transition-all active:scale-95">
+                <Download size={13} className="text-foreground" /> Export
               </button>
               <button onClick={handleViewAnalytics}
-                className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-[] hover:bg-[] text-white text-xs sm:text-sm font-semibold shadow-sm hover:shadow-md transition-all active:scale-95">
+                className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-foreground hover:bg-foreground/90 text-background text-xs sm:text-sm font-semibold shadow-sm hover:shadow-md transition-all active:scale-95">
                 <BarChart2 size={13} /> <span className="hidden sm:inline">View Analytics</span><span className="sm:hidden">Analytics</span>
               </button>
             </div>

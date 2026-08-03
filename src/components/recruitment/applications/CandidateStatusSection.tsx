@@ -139,22 +139,22 @@ export default function CandidateStatusSection({
   }, [expanded]);
 
   return (
-    <div className="mx-5 lg:mx-6 bg-white border border-[] rounded-2xl shadow-sm overflow-hidden">
+    <div className="mx-5 lg:mx-6 bg-white border border-border rounded-2xl shadow-sm overflow-hidden">
       {/* Accordion Header */}
       <button
         onClick={toggle}
         aria-expanded={expanded}
         aria-controls={`status-body-${status}`}
-        className="w-full flex items-center justify-between px-5 py-4 hover:bg-[] transition-colors duration-150 text-left"
+        className="w-full flex items-center justify-between px-5 py-4 hover:bg-muted transition-colors duration-150 text-left"
       >
         {/* Left: icon + title */}
         <div className="flex items-center gap-3">
-          <div className={cn('w-8 h-8 rounded-xl flex items-center justify-center', `bg-[]`)}>
+          <div className={cn('w-8 h-8 rounded-xl flex items-center justify-center', `bg-muted`)}>
             <Icon size={16} className={cfg.iconColor} />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-sm font-bold text-[]">{cfg.label}</h2>
+              <h2 className="text-sm font-bold text-foreground">{cfg.label}</h2>
               <span
                 className={cn(
                   'px-2 py-0.5 rounded-full text-[10px] font-bold border',
@@ -164,7 +164,7 @@ export default function CandidateStatusSection({
                 {totalCount}
               </span>
             </div>
-            <p className="text-[11px] text-[] mt-0.5">
+            <p className="text-[11px] text-foreground mt-0.5">
               {totalCount} {cfg.description}
             </p>
           </div>
@@ -178,17 +178,17 @@ export default function CandidateStatusSection({
               onViewAll?.(status);
             }}
             aria-label={`View all ${totalCount} ${cfg.label}`}
-            className="hidden sm:flex items-center gap-1 text-xs text-[] hover:text-[] font-medium transition-colors"
+            className="hidden sm:flex items-center gap-1 text-xs text-foreground hover:text-foreground font-medium transition-colors"
           >
             View all ({totalCount})
             <ChevronDown size={12} />
           </button>
 
-          <div className="w-7 h-7 flex items-center justify-center rounded-lg bg-[]">
+          <div className="w-7 h-7 flex items-center justify-center rounded-lg bg-muted">
             {expanded ? (
-              <ChevronUp size={14} className="text-[]" />
+              <ChevronUp size={14} className="text-foreground" />
             ) : (
-              <ChevronDown size={14} className="text-[]" />
+              <ChevronDown size={14} className="text-foreground" />
             )}
           </div>
         </div>
@@ -199,13 +199,13 @@ export default function CandidateStatusSection({
         ref={bodyRef}
         id={`status-body-${status}`}
         className={cn(
-          'border-t border-[] overflow-hidden transition-none',
+          'border-t border-border overflow-hidden transition-none',
           !expanded && 'hidden'
         )}
       >
         {candidates.length === 0 ? (
           <div className="px-5 py-8 text-center">
-            <p className="text-sm text-[]">No candidates in this stage yet.</p>
+            <p className="text-sm text-foreground">No candidates in this stage yet.</p>
           </div>
         ) : (
           <div>
@@ -223,7 +223,7 @@ export default function CandidateStatusSection({
 
             {/* Show "View all" footer if there are more than shown */}
             {totalCount > candidates.length && (
-              <div className="px-5 py-3 border-t border-[] flex items-center justify-center">
+              <div className="px-5 py-3 border-t border-border flex items-center justify-center">
                 <button
                   onClick={() => onViewAll?.(status)}
                   className="text-xs font-medium text-[#F97316] hover:text-[#EA580C] transition-colors"

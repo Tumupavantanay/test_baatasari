@@ -21,7 +21,7 @@ import type { ReviewCandidate } from '@/types/recruitment';
 // ── Skill Tag ─────────────────────────────────────────────────────────────────
 function SkillTag({ label }: { label: string }) {
   return (
-    <span className="px-2.5 py-1 bg-[] text-[] text-[11px] font-medium rounded-lg border border-[]">
+    <span className="px-2.5 py-1 bg-muted text-foreground text-[11px] font-medium rounded-lg border border-border">
       {label}
     </span>
   );
@@ -38,13 +38,13 @@ function StatRow({
   value: string | null;
 }) {
   return (
-    <div className="flex items-center justify-between py-1.5 border-b border-[] last:border-0">
-      <div className="flex items-center gap-2 text-xs text-[]">
+    <div className="flex items-center justify-between py-1.5 border-b border-border last:border-0">
+      <div className="flex items-center gap-2 text-xs text-foreground">
         <Icon size={13} className="flex-shrink-0" />
         <span>{label}</span>
       </div>
-      <span className="text-xs font-semibold text-[]">
-        {value ?? <span className="text-[]">—</span>}
+      <span className="text-xs font-semibold text-foreground">
+        {value ?? <span className="text-foreground">—</span>}
       </span>
     </div>
   );
@@ -125,22 +125,22 @@ export default function NewApplicationsCarousel({
   if (total === 0) return null;
 
   return (
-    <div className="mx-5 lg:mx-6 bg-white border border-[] rounded-2xl shadow-sm overflow-hidden">
+    <div className="mx-5 lg:mx-6 bg-white border border-border rounded-2xl shadow-sm overflow-hidden">
       {/* Section header */}
-      <div className="flex items-center justify-between px-5 py-3.5 border-b border-[]">
+      <div className="flex items-center justify-between px-5 py-3.5 border-b border-border">
         <div>
-          <h2 className="text-sm font-bold text-[]">
+          <h2 className="text-sm font-bold text-foreground">
             New Applications{' '}
             <span className="text-[#F97316]">({total})</span>
           </h2>
-          <p className="text-[11px] text-[] mt-0.5">
+          <p className="text-[11px] text-foreground mt-0.5">
             {total} students waiting for your review.
           </p>
         </div>
         <button
           onClick={onMarkAllReviewed}
           aria-label="Mark all new applications as reviewed"
-          className="text-xs font-medium text-[] border border-[] hover:border-[#D1D5DB] hover:bg-[] px-3.5 py-2 rounded-xl transition-all active:scale-95"
+          className="text-xs font-medium text-foreground border border-border hover:border-[#D1D5DB] hover:bg-muted px-3.5 py-2 rounded-xl transition-all active:scale-95"
         >
           Mark all as reviewed
         </button>
@@ -153,15 +153,15 @@ export default function NewApplicationsCarousel({
           onClick={goPrev}
           aria-label="Previous candidate"
           disabled={animating}
-          className="flex-shrink-0 w-10 flex items-center justify-center border-r border-[] hover:bg-[#F8F9FB] transition-colors disabled:opacity-40 group"
+          className="flex-shrink-0 w-10 flex items-center justify-center border-r border-border hover:bg-[#F8F9FB] transition-colors disabled:opacity-40 group"
         >
-          <ChevronLeft size={18} className="text-[] group-hover:text-[] transition-colors" />
+          <ChevronLeft size={18} className="text-foreground group-hover:text-foreground transition-colors" />
         </button>
 
         {/* Main card */}
         <div ref={cardRef} className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-0">
           {/* ── Left pane: Meta ── */}
-          <div className="px-5 py-5 border-b lg:border-b-0 lg:border-r border-[]">
+          <div className="px-5 py-5 border-b lg:border-b-0 lg:border-r border-border">
             {/* Avatar */}
             <div className="flex items-center gap-3 mb-4">
               <div
@@ -171,15 +171,15 @@ export default function NewApplicationsCarousel({
                 {current.avatarInitials}
               </div>
               <div>
-                <p className="text-sm font-bold text-[]">{current.name}</p>
-                <p className="text-xs text-[]">
+                <p className="text-sm font-bold text-foreground">{current.name}</p>
+                <p className="text-xs text-foreground">
                   {current.major} • {current.year}
                 </p>
-                <p className="text-xs text-[]">{current.university}</p>
+                <p className="text-xs text-foreground">{current.university}</p>
               </div>
             </div>
 
-            <p className="text-[10px] text-[] mb-4">{current.appliedTime}</p>
+            <p className="text-[10px] text-foreground mb-4">{current.appliedTime}</p>
 
             {/* Stats */}
             <div className="space-y-0.5">
@@ -192,13 +192,13 @@ export default function NewApplicationsCarousel({
           {/* ── Right pane: Detail ── */}
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-0">
             {/* About + Skills */}
-            <div className="px-5 py-5 border-b md:border-b-0 md:border-r border-[]">
-              <h3 className="text-[11px] font-semibold text-[] uppercase tracking-wider mb-2">
+            <div className="px-5 py-5 border-b md:border-b-0 md:border-r border-border">
+              <h3 className="text-[11px] font-semibold text-foreground uppercase tracking-wider mb-2">
                 About
               </h3>
-              <p className="text-xs text-[] leading-relaxed mb-4">{current.about}</p>
+              <p className="text-xs text-foreground leading-relaxed mb-4">{current.about}</p>
 
-              <h3 className="text-[11px] font-semibold text-[] uppercase tracking-wider mb-2">
+              <h3 className="text-[11px] font-semibold text-foreground uppercase tracking-wider mb-2">
                 Top Skills
               </h3>
               <div className="flex flex-wrap gap-1.5">
@@ -209,8 +209,8 @@ export default function NewApplicationsCarousel({
             </div>
 
             {/* Documents + Links */}
-            <div className="px-5 py-5 border-b md:border-b-0 md:border-r border-[]">
-              <h3 className="text-[11px] font-semibold text-[] uppercase tracking-wider mb-2">
+            <div className="px-5 py-5 border-b md:border-b-0 md:border-r border-border">
+              <h3 className="text-[11px] font-semibold text-foreground uppercase tracking-wider mb-2">
                 Documents
               </h3>
               <div className="space-y-2 mb-4">
@@ -227,10 +227,10 @@ export default function NewApplicationsCarousel({
                       <FileText size={11} className="text-red-500" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-medium text-[] group-hover:text-[#F97316] transition-colors leading-tight truncate max-w-[140px]">
+                      <p className="text-[11px] font-medium text-foreground group-hover:text-[#F97316] transition-colors leading-tight truncate max-w-[140px]">
                         {doc.name}
                       </p>
-                      <p className="text-[9px] text-[]">{doc.size}</p>
+                      <p className="text-[9px] text-foreground">{doc.size}</p>
                     </div>
                   </a>
                 ))}
@@ -238,7 +238,7 @@ export default function NewApplicationsCarousel({
 
               {current.githubProfileUrl && (
                 <div className="mb-2">
-                  <h3 className="text-[11px] font-semibold text-[] uppercase tracking-wider mb-1.5">
+                  <h3 className="text-[11px] font-semibold text-foreground uppercase tracking-wider mb-1.5">
                     Github Profile
                   </h3>
                   <a
@@ -255,7 +255,7 @@ export default function NewApplicationsCarousel({
 
               {current.portfolioUrl && (
                 <div>
-                  <h3 className="text-[11px] font-semibold text-[] uppercase tracking-wider mb-1.5">
+                  <h3 className="text-[11px] font-semibold text-foreground uppercase tracking-wider mb-1.5">
                     /Portfolio
                   </h3>
                   <a
@@ -273,12 +273,12 @@ export default function NewApplicationsCarousel({
 
             {/* Quick Summary */}
             <div className="px-5 py-5">
-              <h3 className="text-[11px] font-semibold text-[] uppercase tracking-wider mb-2">
+              <h3 className="text-[11px] font-semibold text-foreground uppercase tracking-wider mb-2">
                 Quick Summary
               </h3>
               <ul className="space-y-1.5">
                 {current.summaryHighlights.map((h) => (
-                  <li key={h} className="flex items-start gap-2 text-xs text-[]">
+                  <li key={h} className="flex items-start gap-2 text-xs text-foreground">
                     <span className="mt-1 w-1 h-1 rounded-full bg-[#F97316] flex-shrink-0" />
                     {h}
                   </li>
@@ -293,14 +293,14 @@ export default function NewApplicationsCarousel({
           onClick={goNext}
           aria-label="Next candidate"
           disabled={animating}
-          className="flex-shrink-0 w-10 flex items-center justify-center border-l border-[] hover:bg-[#F8F9FB] transition-colors disabled:opacity-40 group"
+          className="flex-shrink-0 w-10 flex items-center justify-center border-l border-border hover:bg-[#F8F9FB] transition-colors disabled:opacity-40 group"
         >
-          <ChevronRight size={18} className="text-[] group-hover:text-[] transition-colors" />
+          <ChevronRight size={18} className="text-foreground group-hover:text-foreground transition-colors" />
         </button>
       </div>
 
       {/* Action Bar */}
-      <div className="flex items-center justify-between px-5 py-3.5 border-t border-[] gap-2 flex-wrap">
+      <div className="flex items-center justify-between px-5 py-3.5 border-t border-border gap-2 flex-wrap">
         <div className="flex items-center gap-2">
           {/* Reject */}
           <button
@@ -326,7 +326,7 @@ export default function NewApplicationsCarousel({
           <button
             onClick={() => onShortlist?.(current)}
             aria-label={`Shortlist ${current.name}`}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#1F2937] hover:bg-[] text-white text-xs font-semibold transition-all active:scale-95 shadow-sm"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#1F2937] hover:bg-muted text-white text-xs font-semibold transition-all active:scale-95 shadow-sm"
           >
             <Star size={13} />
             Shortlist
@@ -337,7 +337,7 @@ export default function NewApplicationsCarousel({
         <button
           onClick={() => onViewFull?.(current)}
           aria-label={`View full application for ${current.name}`}
-          className="flex items-center gap-1 text-xs font-medium text-[] hover:text-[] transition-colors"
+          className="flex items-center gap-1 text-xs font-medium text-foreground hover:text-foreground transition-colors"
         >
           View Full Application
           <ExternalLink size={11} />
@@ -361,7 +361,7 @@ export default function NewApplicationsCarousel({
               'rounded-full transition-all duration-200',
               i === currentIndex
                 ? 'w-4 h-2 bg-[#F97316]'
-                : 'w-2 h-2 bg-[#D1D5DB] hover:bg-[]'
+                : 'w-2 h-2 bg-[#D1D5DB] hover:bg-muted'
             )}
           />
         ))}
