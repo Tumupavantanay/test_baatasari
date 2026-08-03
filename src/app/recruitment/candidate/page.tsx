@@ -42,22 +42,22 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
     <>
       {open && <div className="fixed inset-0 z-40 bg-black/40 lg:hidden" onClick={onClose} />}
       <aside className={cn(
-        'fixed inset-y-0 left-0 z-50 w-60 bg-muted border-r border-border flex flex-col transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:flex-shrink-0',
+        'fixed inset-y-0 left-0 z-50 w-60 bg-foreground border-r border-border flex flex-col transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:flex-shrink-0',
         open ? 'translate-x-0' : '-translate-x-full'
       )}>
         {/* Logo */}
-        <div className="flex items-center justify-between px-4 pt-4 pb-3.5 border-b border-border">
+        <div className="flex items-center justify-between px-4 pt-4 pb-3.5 border-b border-white/10">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
               <span className="text-[10px] font-black text-white">CC</span>
             </div>
             <div className="leading-tight">
-              <p className="text-[11px] font-bold text-foreground">Campus Connect</p>
-              <p className="text-[9px] text-muted-foreground font-medium tracking-widest uppercase">by BAATASARI</p>
+              <p className="text-[11px] font-bold text-background">Campus Connect</p>
+              <p className="text-[9px] text-muted font-medium tracking-widest uppercase">by BAATASARI</p>
             </div>
           </div>
-          <button onClick={onClose} className="lg:hidden p-1 rounded-lg hover:bg-border">
-            <X size={16} className="text-muted-foreground" />
+          <button onClick={onClose} className="lg:hidden p-1 rounded-lg hover:bg-white/10">
+            <X size={16} className="text-muted" />
           </button>
         </div>
 
@@ -71,10 +71,10 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
                   <Link href={item.href} onClick={onClose} aria-current={item.isActive ? 'page' : undefined}
                     className={cn(
                       'flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 relative group',
-                      item.isActive ? 'bg-border text-foreground font-semibold' : 'text-muted-foreground hover:bg-border hover:text-foreground'
+                      item.isActive ? 'bg-white/10 text-background font-semibold' : 'text-muted hover:bg-white/5 hover:text-background'
                     )}>
                     {item.isActive && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-primary rounded-r-full" />}
-                    <Icon size={15} className={cn('flex-shrink-0', item.isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-muted-foreground')} />
+                    <Icon size={15} className={cn('flex-shrink-0', item.isActive ? 'text-primary' : 'text-muted group-hover:text-primary')} />
                     <span className="flex-1">{item.label}</span>
                   </Link>
                 </li>
@@ -84,15 +84,15 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
         </nav>
 
         {/* Help card */}
-        <div className="mx-3 mb-4 p-3.5 bg-white border border-border rounded-xl shadow-sm">
+        <div className="mx-3 mb-4 p-3.5 bg-white/5 border border-white/10 rounded-xl shadow-sm">
           <div className="flex items-center gap-2 mb-1.5">
             <HelpCircle size={14} className="text-primary flex-shrink-0" />
-            <p className="text-[11px] font-semibold text-foreground">Need help?</p>
+            <p className="text-[11px] font-semibold text-background">Need help?</p>
           </div>
-          <p className="text-[10px] text-muted-foreground leading-relaxed mb-2.5">
+          <p className="text-[10px] text-muted leading-relaxed mb-2.5">
             View guide to manage applications and interviews.
           </p>
-          <button className="flex items-center gap-1.5 text-[11px] font-bold text-primary hover:text-foreground transition-colors">
+          <button className="flex items-center gap-1.5 text-[11px] font-bold text-primary hover:text-primary/80 transition-colors">
             <FileText size={12} /> View Guide
           </button>
         </div>
