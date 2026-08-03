@@ -61,7 +61,7 @@ export interface EventItem {
 export const featuredEvents: EventItem[] = [
   {
     id: "feat-1",
-    title: "Battle of Bands 🎸",
+    title: "Battle of Bands",
     subtitle: "Starts in 45 mins",
     category: "Music",
     categoryColor: "red",
@@ -220,49 +220,73 @@ export const friendsAttendingEvent = {
 export interface ClubItem {
   id: string;
   name: string;
-  icon: string;
+  /** Lucide icon name chosen by club during registration */
+  lucideIcon: string;
+  /** Short club tagline/description */
+  description: string;
+  memberCount: number;
   nextEvent?: string;
   nextEventDate?: string;
   isActive?: boolean;
+  /** Brand color hex chosen at registration */
   color: string;
+  /** Background tint */
+  bgColor: string;
+  href: string;
 }
 
 export const clubsFollowed: ClubItem[] = [
   {
     id: "club-1",
     name: "IEEE",
-    icon: "⚡",
+    lucideIcon: "Zap",
+    description: "Tech & Electronics",
+    memberCount: 214,
     nextEvent: "Workshop",
     nextEventDate: "Tomorrow",
     isActive: false,
     color: "#A1BCE6",
+    bgColor: "#EBF2FB",
+    href: "/clubs/ieee",
   },
   {
     id: "club-2",
     name: "Music Club",
-    icon: "🎵",
+    lucideIcon: "Music",
+    description: "Performances & Jams",
+    memberCount: 178,
     nextEvent: "Battle of Bands",
     nextEventDate: "Today",
     isActive: true,
     color: "#F59E0B",
+    bgColor: "#FEF3C7",
+    href: "/clubs/music",
   },
   {
     id: "club-3",
     name: "Photography Club",
-    icon: "📷",
+    lucideIcon: "Camera",
+    description: "Capture Moments",
+    memberCount: 132,
     nextEvent: "2 Events",
     nextEventDate: "This Week",
     isActive: false,
     color: "#F97316",
+    bgColor: "#FFF7ED",
+    href: "/clubs/photography",
   },
   {
     id: "club-4",
     name: "CSI Club",
-    icon: "💻",
+    lucideIcon: "Code2",
+    description: "Web & Dev Culture",
+    memberCount: 196,
     nextEvent: "Web Dev Workshop",
     nextEventDate: "Jul 31",
     isActive: false,
     color: "#10B981",
+    bgColor: "#D1FAE5",
+    href: "/clubs/csi",
   },
 ];
 
@@ -283,7 +307,7 @@ export const announcements: AnnouncementItem[] = [
     source: "University",
     title: "Semester Registration begins tomorrow",
     timeAgo: "2h ago",
-    icon: "🏛️",
+    icon: "Landmark",
     isUnread: true,
     iconBg: "#EFF6FF",
   },
@@ -292,7 +316,7 @@ export const announcements: AnnouncementItem[] = [
     source: "Examination Cell",
     title: "Hall Tickets Released",
     timeAgo: "3h ago",
-    icon: "📋",
+    icon: "ClipboardList",
     isUnread: true,
     iconBg: "#F0FDF4",
   },
@@ -386,7 +410,7 @@ export const navItems: NavItem[] = [
 // ── Campus Pulse ──────────────────────────────────────────────────────────────
 export const campusPulse = {
   label: "Campus Pulse",
-  status: "Campus is active 🔥",
+  status: "Campus is active",
   eventsToday: 18,
   isLive: true,
 };

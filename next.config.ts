@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [],
+    formats: ['image/webp', 'image/avif'],
+  },
+  // Allow GSAP and other client-only packages
+  transpilePackages: [],
 };
 
 export default nextConfig;
