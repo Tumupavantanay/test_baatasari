@@ -8,7 +8,7 @@ import {
   LayoutDashboard, Users, Briefcase, FileText, CalendarClock, UserCheck,
   Settings, HelpCircle, ExternalLink, Inbox, Eye, Star, Calendar,
   CheckCircle, XCircle, ChevronLeft, ChevronRight, Link2, Globe,
-  MoreVertical, UserPlus, Lightbulb, X, Menu
+  MoreVertical, UserPlus, Lightbulb, X, Menu, Zap
 } from 'lucide-react';
 import type { CandidateStatus, ReviewCandidate, PipelineMetrics } from '@/types/recruitment';
 import {
@@ -50,27 +50,31 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
       )}
 
       <aside className={cn(
-        'fixed inset-y-0 left-0 z-50 w-60 bg-foreground border-r border-border flex flex-col transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:flex-shrink-0',
+        'fixed inset-y-0 left-0 z-50 w-60 bg-[#0F172A] flex flex-col transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 lg:z-auto lg:flex-shrink-0',
         open ? 'translate-x-0' : '-translate-x-full'
       )}>
         {/* Logo */}
-        <div className="flex items-center justify-between px-4 pt-4 pb-3.5 border-b border-white/10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
-              <span className="text-[10px] font-black text-white">CC</span>
+        <div className="px-5 pt-6 pb-4 border-b border-white/5 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 group" aria-label="Campus Connect Home" onClick={onClose}>
+            <div className="w-8 h-8 rounded-lg bg-[#D97706] flex items-center justify-center shadow-md">
+              <Zap size={16} className="text-white" />
             </div>
             <div className="leading-tight">
-              <p className="text-[11px] font-bold text-background">Campus Connect</p>
-              <p className="text-[9px] text-muted font-medium tracking-widest uppercase">by BAATASARI</p>
+              <p className="text-[8px] font-semibold tracking-widest text-[#A1BCE6]/60 uppercase">
+                Campus Connect
+              </p>
+              <p className="text-[10px] font-bold text-white tracking-wider uppercase">
+                by BAATASARI
+              </p>
             </div>
-          </div>
+          </Link>
           <button onClick={onClose} className="lg:hidden p-1 rounded-lg hover:bg-white/10">
-            <X size={16} className="text-muted" />
+            <X size={16} className="text-white/60" />
           </button>
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 px-3 py-3 overflow-y-auto">
+        <nav className="flex-1 px-3 py-4 overflow-y-auto">
           <ul className="space-y-0.5">
             {recruitmentNavItems.map((item) => {
               const Icon = NAV_ICONS[item.icon] ?? LayoutDashboard;
@@ -78,11 +82,13 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
                 <li key={item.id}>
                   <Link href={item.href} onClick={onClose} aria-current={item.isActive ? 'page' : undefined}
                     className={cn(
-                      'flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 relative group',
-                      item.isActive ? 'bg-white/10 text-background font-semibold' : 'text-muted hover:bg-white/5 hover:text-background'
+                      'flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] font-medium transition-all duration-200 group relative',
+                      item.isActive
+                        ? 'bg-[#D97706]/15 text-[#D97706]'
+                        : 'text-white/45 hover:bg-white/5 hover:text-white/80'
                     )}>
-                    {item.isActive && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-primary rounded-r-full" />}
-                    <Icon size={15} className={cn('flex-shrink-0', item.isActive ? 'text-primary' : 'text-muted group-hover:text-primary')} />
+                    {item.isActive && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-[#D97706] rounded-r-full" />}
+                    <Icon size={16} className={cn('flex-shrink-0 transition-colors duration-200', item.isActive ? 'text-[#D97706]' : 'text-white/30 group-hover:text-white/60')} />
                     <span className="flex-1">{item.label}</span>
                   </Link>
                 </li>
@@ -92,17 +98,31 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
         </nav>
 
         {/* Help card */}
-        <div className="mx-3 mb-4 p-3.5 bg-white/5 border border-white/10 rounded-xl shadow-sm">
+        <div className="mx-3 mb-4 p-3.5 bg-white/5 border border-white/5 rounded-xl shadow-sm">
           <div className="flex items-center gap-2 mb-1.5">
-            <HelpCircle size={14} className="text-primary flex-shrink-0" />
-            <p className="text-[11px] font-semibold text-background">Need help?</p>
+            <HelpCircle size={14} className="text-[#D97706] flex-shrink-0" />
+            <p className="text-[11px] font-semibold text-white">Need help?</p>
           </div>
-          <p className="text-[10px] text-muted leading-relaxed mb-2.5">
+          <p className="text-[10px] text-white/50 leading-relaxed mb-2.5">
             View guide to manage applications and interviews.
           </p>
-          <button className="w-full flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-[10px] font-semibold transition-colors">
+          <button className="w-full flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-[#D97706] hover:bg-[#D97706]/90 text-white text-[10px] font-semibold transition-colors">
             <ExternalLink size={10} /> View Guide
           </button>
+        </div>
+
+        {/* ── Footer ── */}
+        <div className="px-6 pb-5 pt-2 border-t border-white/5">
+          <div className="flex items-center gap-2 mb-1.5 mt-3">
+            <div className="w-6 h-6 rounded-lg bg-[#D97706] flex items-center justify-center shadow-sm">
+              <Zap size={12} className="text-white" />
+            </div>
+            <div className="leading-tight">
+              <p className="text-[8px] font-semibold tracking-widest text-[#A1BCE6]/60 uppercase">Campus</p>
+              <p className="text-[10px] font-bold text-white tracking-wider uppercase">Connect</p>
+            </div>
+          </div>
+          <p className="text-[10px] text-white/30">© 2025 All rights reserved.</p>
         </div>
       </aside>
     </>
