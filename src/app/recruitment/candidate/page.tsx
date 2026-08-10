@@ -146,17 +146,34 @@ const candidate = {
   ]
 };
 
-const StarRating = ({ rating, total }: { rating: number; total: number }) => {
+const StarRating = ({ rating, total, onChange }: { rating: number; total: number; onChange?: (rating: number) => void }) => {
   return (
     <div className="flex items-center gap-0.5">
-      {[...Array(5)].map((_, i) => {
-        const fill = (i + 1) <= rating ? 'primary' : i + 0.5 === rating ? 'url(#half-fill)' : 'none';
-        const color = (i + 1) <= rating || i + 0.5 === rating ? 'primary' : 'border';
+      {[...Array(total)].map((_, i) => {
+        const fill = (i + 1) <= rating ? 'currentColor' : i + 0.5 === rating ? `url(#half-fill-${i})` : 'none';
+        const strokeColor = (i + 1) <= rating || i + 0.5 === rating ? 'currentColor' : 'currentColor';
+        const isFilled = (i + 1) <= rating || i + 0.5 === rating;
+        
         return (
-          <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={fill} stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg 
+            key={i} 
+            width="14" 
+            height="14" 
+            viewBox="0 0 24 24" 
+            fill={fill} 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            onClick={() => onChange?.(i + 1)}
+            className={cn(
+              onChange ? 'cursor-pointer hover:scale-110 transition-transform' : '',
+              isFilled ? 'text-primary' : 'text-border'
+            )}
+          >
             <defs>
-              <linearGradient id="half-fill">
-                <stop offset="50%" stopColor="primary" />
+              <linearGradient id={`half-fill-${i}`}>
+                <stop offset="50%" stopColor="currentColor" />
                 <stop offset="50%" stopColor="transparent" />
               </linearGradient>
             </defs>
@@ -173,12 +190,32 @@ export default function CandidateDetailPage() {
   const [activeTab, setActiveTab] = useState<'answers' | 'attachments'>('answers');
   const [expandedQ, setExpandedQ] = useState<number | null>(0);
   const [recommendation, setRecommendation] = useState<string>('strong');
+  const [evaluation, setEvaluation] = useState([
+    { label: 'Technical Skills', score: 20, max: 25, stars: 4 },
+    { label: 'Projects & Portfolio', score: 20, max: 25, stars: 4 },
+    { label: 'Problem Solving', score: 15, max: 20, stars: 3.5 },
+    { label: 'Communication', score: 14, max: 15, stars: 4.5 },
+    { label: 'Leadership & Initiative', score: 13, max: 15, stars: 4.5 },
+  ]);
   const router = useRouter();
 
   const handleAction = (action: string) => {
     // Navigate back to the pipeline view after taking an action to simulate progression
     router.push('/recruitment');
   };
+
+  const handleRatingChange = (index: number, newStars: number) => {
+    setEvaluation(prev => {
+      const next = [...prev];
+      const item = next[index];
+      item.stars = newStars;
+      item.score = Math.round(newStars * (item.max / 5));
+      return next;
+    });
+  };
+
+  const totalScore = evaluation.reduce((acc, curr) => acc + curr.score, 0);
+  const maxScore = evaluation.reduce((acc, curr) => acc + curr.max, 0);
 
   return (
     <div className="flex h-screen overflow-hidden bg-muted">
@@ -366,17 +403,15 @@ export default function CandidateDetailPage() {
                   <div>
                     <p className="text-sm font-bold text-foreground mb-4">Score Breakdown</p>
                     <div className="space-y-3">
-                      {[
-                        { label: 'Technical Skills', score: 20, max: 25, stars: 4 },
-                        { label: 'Projects & Portfolio', score: 20, max: 25, stars: 4 },
-                        { label: 'Problem Solving', score: 15, max: 20, stars: 3.5 },
-                        { label: 'Communication', score: 14, max: 15, stars: 4.5 },
-                        { label: 'Leadership & Initiative', score: 13, max: 15, stars: 4.5 },
-                      ].map(item => (
+                      {evaluation.map((item, index) => (
                         <div key={item.label} className="flex items-center justify-between">
                           <p className="text-xs font-semibold text-muted-foreground">{item.label}</p>
                           <div className="flex items-center gap-3">
-                            <StarRating rating={item.stars} total={5} />
+                            <StarRating 
+                              rating={item.stars} 
+                              total={5} 
+                              onChange={(newStars) => handleRatingChange(index, newStars)}
+                            />
                             <p className="text-xs font-bold text-foreground w-12 whitespace-nowrap text-right">{item.score} <span className="text-muted-foreground font-medium">/ {item.max}</span></p>
                           </div>
                         </div>
@@ -384,7 +419,7 @@ export default function CandidateDetailPage() {
                     </div>
                     <div className="mt-5 pt-4 border-t border-border flex items-center justify-between">
                       <p className="text-sm font-bold text-foreground">Total</p>
-                      <p className="text-sm font-bold text-foreground">82 / 100</p>
+                      <p className="text-sm font-bold text-foreground">{totalScore} / {maxScore}</p>
                     </div>
                   </div>
                 </div>
@@ -417,8 +452,12 @@ export default function CandidateDetailPage() {
                   <div>
                     <p className="text-sm font-bold text-foreground mb-3">Remarks</p>
                     <textarea 
-                      className="w-full h-28 p-3 text-sm text-foreground bg-muted border border-border rounded-xl focus:outline-none focus:border-primary resize-none"
+                      className="w-full min-h-[112px] p-3 text-sm text-foreground bg-muted border border-border rounded-xl focus:outline-none focus:border-primary resize-none overflow-hidden"
                       defaultValue="Sneha has excellent technical skills and has built some impressive projects. Her problem solving approach is good and she communicates clearly. Would be a valuable addition to the frontend team."
+                      onInput={(e) => {
+                        e.currentTarget.style.height = 'auto';
+                        e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                      }}
                     />
                     <p className="text-right text-[10px] text-muted-foreground mt-1 font-medium">186 / 500</p>
                   </div>
